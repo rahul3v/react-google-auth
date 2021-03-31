@@ -6,6 +6,7 @@ import Logout from './components/Logout';
 function App() {
   const [login, setLogin] = useState(false)
   const [userData, setUserData] = useState({})
+  const [myData, setMyData] = useState({})
 
   useEffect(()=>{
     document.addEventListener('online',()=>{
@@ -13,7 +14,10 @@ function App() {
     })
     document.addEventListener('offline',()=>{
       console.log('user is offline')
-    })
+    });
+    fetch('http://localhost:3001/api')
+      .then(response => response.json())
+      .then(data => {setMyData(data);console.log(data)});
   },[])
   
   useEffect(()=>{
@@ -39,7 +43,22 @@ function App() {
           <div className="profile-details">
             <h5>Complete Profile</h5>
             <div className="detail-block">
-              <div></div>
+              <div className="feeds">
+                { 
+                  myData && myData.map((data,i)=>{
+                   // if(i>0)return '';
+                    return (<>
+                        <img className="feed-img" alt="data.img" src={data.img} referrerPolicy="no-referrer" />
+                        <div>
+                          <p>{data.shortDis}</p>
+                          likes : {data.likes} <br/>
+                          You commented {data.comments} time
+                        </div>
+                      </>
+                    )
+                  })
+                }
+              </div>
               <div style={{background:'#ffd09f'}}></div>
             </div>
           </div>

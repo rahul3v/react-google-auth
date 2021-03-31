@@ -80,3 +80,17 @@
 .detail-block>div:hover{
   transform: translateY(-5px);
 }
+
+.feeds{
+  display:flex;
+  align-items:center;
+  overflow:auto
+}
+
+.feed-img{
+  width:60px;
+  height:60px;
+  border-radius:10px;
+  display:block;
+  object-fit:cover;
+}

@@ -38,3 +38,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 To build the final project
 
 ### `npm run build`
+
+
+### To run the server to use a REST-API, try it in another console
+ `node server`
